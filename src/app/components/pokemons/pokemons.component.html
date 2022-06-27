@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-between pb-3">
+  <div>
+    <app-custom-input [customControl]="this.filter" placeholder="Buscar"></app-custom-input>
+  </div>
+  <div>
+    <button type="button" (click)="this.addPokemon()" class="btn btn-primary">+ Nuevo</button>
+  </div>
+</div>
+<div class="height-table">
+  <table class="table table-bordered">
+    <thead>
+    <tr class="table-light text-center">
+      <th>Nombre</th>
+      <th>Imagen</th>
+      <th>Ataque</th>
+      <th>Defensa</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="!(this.pokemons | filterPokemon: this.filter.value)?.length">
+      <td class="td-center" colspan="5">
+        no se encontro resultados
+      </td>
+    </tr>
+    <tr *ngFor="let pokemon of this.pokemons | filterPokemon: this.filter.value">
+      <td class="td-center">
+        {{pokemon.name}}
+      </td>
+      <td class="td-image">
+        <img class="img-thumbnail" [src]="pokemon.image" [alt]="pokemon.name">
+      </td>
+      <td class="td-center">{{pokemon.attack}}</td>
+      <td class="td-center">{{pokemon.defense}}</td>
+      <td class="td-center">
+        <div class="d-flex justify-content-center">
+          <div class="p-1">
+            <button class="btn btn-sm btn-primary" (click)="this.edithPokemon(pokemon)">Editar</button>
+          </div>
+          <div class="p-1">
+            <button class="btn  btn-sm btn-danger" (click)="this.deletePokemon(pokemon.id)">Eliminar</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

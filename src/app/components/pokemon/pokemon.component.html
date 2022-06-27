@@ -1,0 +1,32 @@
+<h3>{{this.title}}</h3>
+<div class="row">
+  <div class="col-6">
+    <app-custom-input label="Nombre:" [customControl]="this.pokemonForm.get('name')"></app-custom-input>
+  </div>
+  <div class="col-6">
+    <app-custom-input label="Ataque:" inputType="progress-bar" [customControl]="this.pokemonForm.get('attack')"></app-custom-input>
+  </div>
+  <div class="col-6">
+    <app-custom-input [maxLength]="1000" label="Imagen:" placeholder="url" [customControl]="this.pokemonForm.get('image')"></app-custom-input>
+  </div>
+  <div class="col-6">
+    <app-custom-input label="Defensa:" inputType="progress-bar" [customControl]="this.pokemonForm.get('defense')"></app-custom-input>
+  </div>
+  <div class="col-6">
+    <app-custom-input label="Tipo:" placeholder="Ej: Fuego" [customControl]="this.pokemonForm.get('type')"></app-custom-input>
+  </div>
+  <div class="col-6">
+    <app-custom-input label="HP:" inputType="progress-bar" [customControl]="this.pokemonForm.get('hp')"></app-custom-input>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="p-2" *ngIf="this.actionType === 'add'">
+    <button class="btn btn-primary" (click)="this.insertPokemon()" [disabled]="this.pokemonForm.invalid">Guardar</button>
+  </div>
+  <div class="p-2" *ngIf="this.actionType === 'edith'">
+    <button class="btn btn-primary" (click)="this.updatePokemon()" [disabled]="this.pokemonForm.invalid">Actualizar</button>
+  </div>
+  <div class="p-2">
+    <button class="btn btn-secondary" (click)="this.cancel()">Cancelar</button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="p-2">
+  <h2>Listado de Pokemon</h2>
+  <div class="pb-2">
+    <app-pokemons #pokemons (actionHandler)="this.actionHandler($event)"></app-pokemons>
+  </div>
+  <app-pokemon *ngIf="this.actionType !== 'init'"
+               [actionType]="this.actionType"
+               [title]="this.title"
+               [pokemon]="this.pokemon"
+               (pokemonHandler)="this.actionHandler($event)"
+  ></app-pokemon>
+</div>
+
